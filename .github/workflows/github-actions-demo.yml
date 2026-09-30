@@ -10,11 +10,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Create file
-        run: echo "Bonjour depuis GitHub Actions" > fichier.txt
-
-      - name: Upload file
-        uses: actions/upload-artifact@v4
-        with:
-          name: mon-fichier
-          path: fichier.txt
+      - name: Run Python
+        env:
+          SECRET_API_TOKEN: ${{ secrets.SECRET_API_TOKEN }}
+        run: python job.py
